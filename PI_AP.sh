@@ -30,7 +30,17 @@ sudo echo "iface wlan0 inet static" >> /etc/network/interfaces
 sudo echo "address 10.10.0.1" >> /etc/network/interfaces
 sudo echo "netmask 255.255.255.0" >> /etc/network/interfaces
 
-#TODO add auto connect of wlan1 to staff
+sudo echo "allow-hotplug wlan1" >> /etc/network/interfaces
+sudo echo "iface wlan1 inet manual" >> /etc/network/interfaces
+sudo echo "wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf" >> /etc/network/interfaces
+
+
+sudo echo "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev" > "/etc/wpa_supplicant/wpa_supplicant.conf"
+sudo echo "update_config=1" >> "/etc/wpa_supplicant/wpa_supplicant.conf"
+sudo echo "network={" >> "/etc/wpa_supplicant/wpa_supplicant.conf"
+sudo echo 'ssid="staff"' >> "/etc/wpa_supplicant/wpa_supplicant.conf"
+sudo echo "key_mgmt=NONE" >> "/etc/wpa_supplicant/wpa_supplicant.conf"
+sudo echo "}" >> "/etc/wpa_supplicant/wpa_supplicant.conf"
 
 sudo apt-get install isc-dhcp-server
 
