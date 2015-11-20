@@ -1,4 +1,14 @@
 #!/bin/sh
+
+echo "This script is expecting to be ran on a fresh install of raspbian, otherwise it might break something"
+echo "continue?"
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes ) break;;
+        No ) exit;;
+    esac
+done
+
 echo "updating"
 sudo apt-get update
 sudo apt-get upgrade -y
