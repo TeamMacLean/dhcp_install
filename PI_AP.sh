@@ -80,6 +80,5 @@ sudo chmod 755 /etc/network/if-pre-up.d/iptables
 # in /etc/rc.local add this before exit 0:
 # sudo service isc-dhcp-server restart
 #
-#
 
 sudo reboot #just to be sure
