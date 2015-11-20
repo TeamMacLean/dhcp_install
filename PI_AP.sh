@@ -81,3 +81,5 @@ sudo chmod 755 /etc/network/if-pre-up.d/iptables
 # sudo service isc-dhcp-server restart
 #
 #
+
+sudo reboot #just to be sure
