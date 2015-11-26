@@ -71,7 +71,8 @@ iptables -t nat -A POSTROUTING -o wlan1 -j MASQUERADE
 iptables-save > /etc/iptables.up.rules
 
  echo "#!/bin/sh" > /etc/network/if-pre-up.d/iptables
- echo "iptables-restore < /etc/iptables.up.rules exit 0" > /etc/network/if-pre-up.d/iptables #might need to remove 'exit 0'
+ echo "iptables-restore < /etc/iptables.up.rules" >> /etc/network/if-pre-up.d/iptables
+ echo "exit 0" >> /etc/network/if-pre-up.d/iptables
 
  chown root:root /etc/network/if-pre-up.d/iptables
  chmod +x /etc/network/if-pre-up.d/iptables
