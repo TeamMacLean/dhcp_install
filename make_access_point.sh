@@ -21,6 +21,7 @@ apt-get install hostapd
  chown root.root /usr/sbin/hostapd
  chmod 755 /usr/sbin/hostapd
 
+
 echo "setting up hostap"
  echo "interface=wlan1" >> /etc/hostapd/hostapd.conf
  echo "driver=rtl871xdrv" >> /etc/hostapd/hostapd.conf
