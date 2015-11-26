@@ -1,7 +1,7 @@
 #!/bin/sh
 
-echo "This script is expecting to be ran on a fresh install of raspbian, otherwise it might break something"
-echo "continue?"
+echo "This script expects to be run on a fresh install of Raspbian. It overwrites some configuration stuff.  There is a slight chance it might break something on a more customised setup..."
+echo "Are you happy to continue?"
 select yn in "Yes" "No"; do
     case $yn in
         Yes ) break;;
@@ -13,10 +13,8 @@ echo "updating"
 sudo apt-get update
 sudo apt-get upgrade -y
 
-echo "installing hostap and custom bin"
+echo "installing hostap and custom binary"
 sudo apt-get install hostapd
-wget http://www.daveconroy.com/wp3/wp-content/uploads/2013/07/hostapd.zip
-unzip hostapd.zip
 sudo mv /usr/sbin/hostapd /usr/sbin/hostapd.bak
 sudo mv hostapd /usr/sbin/hostapd.edimax
 sudo ln -sf /usr/sbin/hostapd.edimax /usr/sbin/hostapd
@@ -24,7 +22,7 @@ sudo chown root.root /usr/sbin/hostapd
 sudo chmod 755 /usr/sbin/hostapd
 
 echo "setting up hostap"
-sudo echo "interface=wlan0" >> /etc/hostapd/hostapd.conf
+sudo echo "interface=wlan1" >> /etc/hostapd/hostapd.conf
 sudo echo "driver=rtl871xdrv" >> /etc/hostapd/hostapd.conf
 sudo echo "ssid=THEPI" >> /etc/hostapd/hostapd.conf
 sudo echo "channel=6" >> /etc/hostapd/hostapd.conf
@@ -40,20 +38,9 @@ sudo echo "macaddr_acl=0" >> /etc/hostapd/hostapd.conf
 sudo echo 'DAEMON_CONF="/etc/hostapd/hostapd.conf' >> /etc/default/hostapd
 
 echo "setting up network interfaces"
-sudo echo "iface wlan0 inet static" >> /etc/network/interfaces
+sudo echo "iface wlan1 inet static" >> /etc/network/interfaces
 sudo echo "address 10.10.0.1" >> /etc/network/interfaces
 sudo echo "netmask 255.255.255.0" >> /etc/network/interfaces
-
-sudo echo "allow-hotplug wlan1" >> /etc/network/interfaces
-sudo echo "iface wlan1 inet manual" >> /etc/network/interfaces
-sudo echo "wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf" >> /etc/network/interfaces
-
-sudo echo "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev" > /etc/wpa_supplicant/wpa_supplicant.conf
-sudo echo "update_config=1" >> /etc/wpa_supplicant/wpa_supplicant.conf
-sudo echo "network={" >> /etc/wpa_supplicant/wpa_supplicant.conf
-sudo echo 'ssid="staff"' >> /etc/wpa_supplicant/wpa_supplicant.conf
-sudo echo "key_mgmt=NONE" >> /etc/wpa_supplicant/wpa_supplicant.conf
-sudo echo "}" >> /etc/wpa_supplicant/wpa_supplicant.conf
 
 echo "installing DHCP server"
 sudo apt-get install isc-dhcp-server
@@ -69,7 +56,7 @@ sudo echo "subnet 10.10.0.0 netmask 255.255.255.0 {" >> /etc/dhcp/dhcpd.conf
 sudo echo "range 10.10.0.25 10.10.0.50;" >> /etc/dhcp/dhcpd.conf
 sudo echo "option domain-name-servers 8.8.8.8, 8.8.4.4;" >> /etc/dhcp/dhcpd.conf
 sudo echo "option routers 10.10.0.1;" >> /etc/dhcp/dhcpd.conf
-sudo echo "interface wlan0;" >> /etc/dhcp/dhcpd.conf
+sudo echo "interface wlan1;" >> /etc/dhcp/dhcpd.conf
 sudo echo "}" >> /etc/dhcp/dhcpd.conf
 
 
