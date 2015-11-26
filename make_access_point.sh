@@ -38,7 +38,10 @@ echo "setting up hostap"
 
  echo 'DAEMON_CONF="/etc/hostapd/hostapd.conf"' >> /etc/default/hostapd
 
-echo "setting up network interfaces"
+ echo "setting up network interfaces"
+ echo "auto lo" > /etc/network/interfaces
+ echo "iface lo inet loopback" >> /etc/network/interfaces
+ echo iface eth0 inet manual" >> /etc/network/interfaces
  echo "iface wlan1 inet static" >> /etc/network/interfaces
  echo "address 10.10.0.1" >> /etc/network/interfaces
  echo "netmask 255.255.255.0" >> /etc/network/interfaces
@@ -68,7 +71,7 @@ iptables -t nat -A POSTROUTING -o wlan1 -j MASQUERADE
 iptables-save > /etc/iptables.up.rules
 
  echo "#!/bin/sh" > /etc/network/if-pre-up.d/iptables
- echo "iptables-restore < /etc/iptables.up.rules exit 0" > /etc/network/if-pre-up.d/iptables #might need to remove 'exit 0'
+ echo "iptables-restore < /etc/iptables.up.rules" > /etc/network/if-pre-up.d/iptables #might need to remove 'exit 0'
 
  chown root:root /etc/network/if-pre-up.d/iptables
  chmod +x /etc/network/if-pre-up.d/iptables
