@@ -36,7 +36,7 @@ echo "setting up hostap"
  echo "auth_algs=1" >> /etc/hostapd/hostapd.conf
  echo "macaddr_acl=0" >> /etc/hostapd/hostapd.conf
 
- echo 'DAEMON_CONF="/etc/hostapd/hostapd.conf' >> /etc/default/hostapd
+ echo 'DAEMON_CONF="/etc/hostapd/hostapd.conf"' >> /etc/default/hostapd
 
 echo "setting up network interfaces"
  echo "iface wlan1 inet static" >> /etc/network/interfaces
