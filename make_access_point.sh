@@ -14,7 +14,7 @@ apt-get update
 apt-get upgrade -y
 
 echo "installing hostap and custom binary"
-apt-get install hostapd
+apt-get install hostapd -y
  mv /usr/sbin/hostapd /usr/sbin/hostapd.bak
  mv hostapd /usr/sbin/hostapd.edimax
  ln -sf /usr/sbin/hostapd.edimax /usr/sbin/hostapd
