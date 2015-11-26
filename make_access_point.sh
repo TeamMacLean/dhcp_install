@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo "This script expects to be run on a fresh install of Raspbian. It overwrites some configuration stuff.  There is a slight chance it might break something on a more customised setup..."
 echo "Are you happy to continue?"
