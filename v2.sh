@@ -245,6 +245,14 @@ iptables -A FORWARD -i ${WAN} -o ${NIC} -m state --state RELATED,ESTABLISHED -j 
 iptables -A FORWARD -i ${NIC} -o ${WAN} -j ACCEPT
 sh -c "iptables-save > /etc/iptables.ipv4.nat"
 
+echo "source-directory /etc/network/interfaces.d"  >  /etc/network/interfaces
+echo "auto lo"  >>  /etc/network/interfaces
+echo "iface lo inet loopback"  >>  /etc/network/interfaces
+echo "iface eth0 inet manual"  >>  /etc/network/interfaces
+echo "allow-hotplug ${WAN}"  >>  /etc/network/interfaces
+echo "iface ${WAN} inet manual"  >>  /etc/network/interfaces
+echo "    wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf"  >>  /etc/network/interfaces
+
 echo "Configure: /etc/network/interfaces"                                                       | tee -a ${log_file}
 echo "auto ${NIC}"                                         >>  /etc/network/interfaces
 echo "allow-hotplug ${NIC}"                                >> /etc/network/interfaces
