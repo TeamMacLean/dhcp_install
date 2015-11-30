@@ -5,7 +5,7 @@
 
 ## Pre-requisites
 * A Raspberry Pi with an internet connection (we presume this is via a WiFi dongle in the USB port, but could be Ethernet).
-* The script will reboot the system on completion - so make sure nothing is running.
+* The script will need to reboot the system on completion - so make sure nothing is running.
 
 
 ## Install
