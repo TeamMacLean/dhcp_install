@@ -13,20 +13,12 @@
 0. Plug in your second WiFi dongle.
 1. Download and unzip (or `git clone`) this package.
 2. `cd` into the `make_ap` directory and type `./make_access_point.sh`
-3. During the process you'll be asked to specify network details, including the name for the WiFi connection you want to create and the password. Note these down.
+3. During the process you'll be asked to specify network details, including the name for the WiFi connection (the SSID) you want to create and the password. You will be asked which IP address you would like: `10.10.0.1.X` is usually a useful one. Note all these.
+4. You will be asked which interface you want to broadcast over. If you have two WiFi dongles, usually this will be `WLAN1` (wireless 1), because `WLAN0` is for the existing internet connected first dongle. If you are connecting to the internet with ethernet (`eth0`) then you can use `WLAN0` to broadcast.
 
 ## Finding your Pi's network after reboot
 
-The script will automatically reboot your system. When it comes back up, you should be able to browse for open WiFi with another machine. The Pi will broadcast its network as `THEPI` and the default password is `THEPASSWORD`.
-You can change these values by editing the file `/etc/hostapd/hostapd.conf` e.g `sudo nano /etc/hostapd/hostapd.conf` and look for the following lines:
-
-> ssid=THEPI
-
-and
-
-> wpa_passphrase=THEPASSWORD
-
-set them to something more secure. You will need to reboot - `sudo reboot`
+The script will quit and ask that you reboot - `sudo reboot`. When it comes back up you can access the Pi by switching your external computer's WiFi to connect to the SSID you specified, and you can get terminal access over ssh using `ssh pi@10.10.0.1`. 
 
 
 ## Acknowledgements
