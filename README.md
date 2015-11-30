@@ -12,7 +12,8 @@
 
 0. Plug in your second WiFi dongle.
 1. Download and unzip (or `git clone`) this package.
-2. `cd` into the `dhcp_install` directory and type `./make_access_point.sh`
+2. `cd` into the `make_ap` directory and type `./make_access_point.sh`
+3. During the process you'll be asked to specify network details, including the name for the WiFi connection you want to create and the password. Note these down.
 
 ## Finding your Pi's network after reboot
 
@@ -30,6 +31,5 @@ set them to something more secure. You will need to reboot - `sudo reboot`
 
 ## Acknowledgements
 
-This script relies on Dave Conroy's `hostapd` -
-[Blog Post](http://www.daveconroy.com/using-your-raspberry-pi-as-a-wireless-router-and-web-server/)
-Original Code -  [http://www.daveconroy.com/wp3/wp-content/uploads/2013/07/hostapd.zip](http://www.daveconroy.com/wp3/wp-content/uploads/2013/07/hostapd.zip)
+This script came from Jacek Tokar's
+[Blog Post](http://raspberry-at-home.com/hotspot-wifi-access-point/)
