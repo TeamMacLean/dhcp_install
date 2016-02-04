@@ -240,7 +240,7 @@ service hostapd start                                                           
 service isc-dhcp-server start                                                                  | tee -a ${log_file}
 
 echo ""                                                                                        | tee -a ${log_file}
-read -n 1 -p "Would you like to start AP on boot? (y/n): " startup_answer
+startup_answer="y"
 echo ""
 if [ ${startup_answer,,} = "y" ]; then
         echo "Configure: startup"                                                              | tee -a ${log_file}
