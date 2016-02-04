@@ -104,13 +104,7 @@ echo "Netmask: 255.255.255.0"                                                   
 #echo "DNS: ${DNS}        "                                                                              | tee -a ${log_file}
 echo "WAN: ${WAN}"																						| tee -a ${log_file}
 
-read -n 1 -p "Continue? (y/n):" GO
-echo ""
-        if [ ${GO,,} = "y" ]; then
-                sleep 1
-        else
-				exit 2
-        fi
+
 
 
 echo "Setting up  $NIC"                                                                                 | tee -a ${log_file}
