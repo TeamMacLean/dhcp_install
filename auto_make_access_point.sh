@@ -239,18 +239,9 @@ ifup ${NIC}                                                                     
 service hostapd start                                                                          | tee -a ${log_file}
 service isc-dhcp-server start                                                                  | tee -a ${log_file}
 
-echo ""                                                                                        | tee -a ${log_file}
-startup_answer="y"
-echo ""
-if [ ${startup_answer,,} = "y" ]; then
-        echo "Configure: startup"                                                              | tee -a ${log_file}
-        update-rc.d hostapd enable                                                             | tee -a ${log_file}
-        update-rc.d isc-dhcp-server enable                                                     | tee -a ${log_file}
-else
-        echo "In case you change your mind, please run below commands if you want AP to start on boot:"                       | tee -a ${log_file}
-        echo "update-rc.d hostapd enable"                                                      | tee -a ${log_file}
-        echo "update-rc.d isc-dhcp-server enable"                                              | tee -a ${log_file}
-fi
+echo "Configure: startup"                                                              | tee -a ${log_file}
+update-rc.d hostapd enable                                                             | tee -a ${log_file}
+update-rc.d isc-dhcp-server enable                                                     | tee -a ${log_file}
 
 
 
