@@ -9,7 +9,7 @@
 
 #variables init
 run_time=`date +%Y%m%d%H%M`
-post_link="http://http://raspberry-at-home.com/hotspot-wifi-access-point/"
+#post_link="http://http://raspberry-at-home.com/hotspot-wifi-access-point/"
 #log_file="ap_setup_log.${run_time}"
 
 #cat /dev/null > ${log_file}
@@ -257,13 +257,13 @@ echo "up iptables-restore < /etc/iptables.ipv4.nat"      >> /etc/network/interfa
 
 
 
-if [ ${CHIPSET,,} = "yes" ]; then
+#if [ ${CHIPSET,,} = "yes" ]; then
 #	echo "Download and install: special hostapd version"
 	wget "http://raspberry-at-home.com/files/hostapd.gz"                                           
      gzip -d hostapd.gz
      chmod 755 hostapd
      cp hostapd /usr/sbin/
-fi
+#fi
 
 ifdown ${NIC}                                                                                    
 ifup ${NIC}                                                                                      
