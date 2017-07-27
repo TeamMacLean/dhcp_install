@@ -55,7 +55,7 @@ apt-get update
 
 AP_SSID='TheRPi'
 CHIPSET="yes"
-AP_WPA_PASSPHRASE = 'raspberry'
+AP_WPA_PASSPHRASE='raspberry'
 #if [ `lsusb | grep "RTL8188CUS\|RTL8192CU" | wc -l` -ne 0 ]; then
 #        echo "Your WiFi is based on the chipset that requires special version of hostapd."              
 #        echo "Setup will download it for you."                                                          
